@@ -1,4 +1,4 @@
-package Ejercicio2;
+package Ejercicio1;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +20,7 @@ public class Main {
         ProcessBuilder pb = new ProcessBuilder(args);
         File directorio = new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\Ejercicio1");
         pb.directory(directorio);
+        Map<String, String> mapita = pb.environment();
 
     /* Con esta llamada hacemos que el proceso herede la entrada
     y salida estándares del proceso padre */
