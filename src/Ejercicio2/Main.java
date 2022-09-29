@@ -34,6 +34,8 @@ public class Main {
                 Thread.sleep(3000);
             }
 
+            System.out.println("El proceso se murio como la reina Isabel");
+
             /* Se espera a que termine la ejecución del proceso hijo y se obtiene el código de retorno.
              * Si durante la espera se interrumple la ejecución del programa, se lanzaría una excepción
              * de tipo InterruptedException. Este programa la capturaría y la informaría.
