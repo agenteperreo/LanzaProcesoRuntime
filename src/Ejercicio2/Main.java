@@ -20,10 +20,11 @@ public class Main {
         ProcessBuilder pb = new ProcessBuilder(args);
         File directorio = new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\Ejercicio1");
         pb.directory(directorio);
+        pb.redirectOutput(new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\Ejercicio2\\salidaProcesoLento.txt"));
 
     /* Con esta llamada hacemos que el proceso herede la entrada
     y salida estándares del proceso padre */
-        pb.inheritIO();
+        //pb.inheritIO();
 
         try {
             // Arrancamos el proceso

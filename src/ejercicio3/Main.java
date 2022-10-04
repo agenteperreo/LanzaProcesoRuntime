@@ -1,22 +1,31 @@
 package ejercicio3;
 
 
-import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String comando = JOptionPane.showInputDialog("Escribe el comando que quieras lanzar:");
+        Scanner sc = new Scanner(System.in);
 
-        String comandos []= new String[10];
-        comando=comandos[1];
+        String comando=sc.nextLine();
 
-        ProcessBuilder pb = new ProcessBuilder(comandos[1]);
+        String [] comandos=comando.split(" ");
 
-        pb.inheritIO();
+        ProcessBuilder pb = new ProcessBuilder(comandos);
+
+        pb.redirectOutput(new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\ejercicio3\\salidas.txt"));
+
+        pb.redirectError(new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\ejercicio3\\errores.log"));
+
+        File directorio = new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src\\ejercicio3");
+
+        pb.directory(directorio);
+
+        //pb.inheritIO();
 
         try {
             Process p = pb.start();
