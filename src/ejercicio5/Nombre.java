@@ -8,8 +8,6 @@ public class Nombre {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Dime tu nombre: ");
-
         String nombre = sc.nextLine();
 
         System.out.printf("!Hola %s¡",nombre);
