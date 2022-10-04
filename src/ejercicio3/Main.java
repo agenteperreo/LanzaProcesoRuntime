@@ -1,6 +1,7 @@
 package ejercicio3;
 
-import javax.swing.*;
+
+import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.IOException;
 
@@ -10,9 +11,10 @@ public class Main {
 
         String comando = JOptionPane.showInputDialog("Escribe el comando que quieras lanzar:");
 
-        ProcessBuilder pb = new ProcessBuilder(comando);
+        String comandos []= new String[10];
+        comando=comandos[1];
 
-        pb.directory(new File("C:\\Users\\igarcia\\IdeaProjects\\LanzaProceso\\src"));
+        ProcessBuilder pb = new ProcessBuilder(comandos[1]);
 
         pb.inheritIO();
 
