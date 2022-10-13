@@ -16,7 +16,7 @@ public class Proceso2 {
         Scanner sc = new Scanner(System.in);
         ip= sc.nextLine();
 
-        ip1=ip.split(".");
+        //ip1=ip.split(".");
     }
 
 }
