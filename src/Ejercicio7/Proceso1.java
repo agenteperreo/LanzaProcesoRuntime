@@ -4,15 +4,13 @@ public class Proceso1 {
 
     public static void main(String[] args) {
 
-        int ip1, ip2,ip3,ip4;
+        for (int i = 1; i <= 10; i++) {
+            int octeto1 = (int) (Math.random() * 255);
+            int octeto2 = (int) (Math.random() * 255);
+            int octeto3 = (int) (Math.random() * 255);
+            int octeto4 = (int) (Math.random() * 255);
 
-        for (int i=0; i<10; i++) {
-            ip1=(int)(Math.random()*255);
-            ip2=(int)(Math.random()*255);
-            ip3=(int)(Math.random()*255);
-            ip4=(int)(Math.random()*255);
-            System.out.printf("%d.%d.%d.%d\n",ip1,ip2,ip3,ip4);
+            System.out.println(octeto1 + "." + octeto2 + "." + octeto3 + "." + octeto4);
         }
-
     }
 }
