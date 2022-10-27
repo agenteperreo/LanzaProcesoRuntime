@@ -9,8 +9,14 @@ public class Ejercicio1 {
 		//Abrimos el escaner
 		Scanner sc = new Scanner(System.in);
 
-		//Variable para el nombre de la carpeta
-		String nom;
+		//Variable para le comado
+		String comando="cmd /C";
+
+		//Variable para la ruta de la carpeta
+		String ruta;
+
+		System.out.println("Dime la ruta: ");
+		ruta=sc.nextLine();
 
 		int opc = menu();
 
@@ -21,17 +27,7 @@ public class Ejercicio1 {
 		// Si elige crear una carpeta, debo pedirle también la ruta donde quiere crearla
 		// y el nombre de la carpeta
 		case 1:
-			System.out.print("¿Cual es el nombre de la carpeta?: ");
-			nom = sc.nextLine();
-			String[] comando1 = {"cmd", "/C", "md", "C:\\"+nom};
-			ProcessBuilder pb1 = new ProcessBuilder(comando1);
-
-			try {
-					Process p = pb1.start();
-			} catch (IOException e) {
-				e.getMessage();
-			}
-
+			crearCarpeta(sc, ruta, comando);
 			break;
 		// Si elige crear un fichero, debo pedirle también la ruta donde quiere crearlo
 		// y el nombre del fichero
@@ -44,6 +40,8 @@ public class Ejercicio1 {
 		default:
 			System.out.println("La opción introducida no es correcta");
 		}
+
+		sc.close();
 	}
 
 	public static int menu() {
@@ -59,8 +57,21 @@ public class Ejercicio1 {
 
 		// Leemos la opción de teclado
 		opc = sc.nextInt();
-		sc.close();
 
 		return opc;
+	}
+
+	private static void crearCarpeta(Scanner sc, String ruta, String comando) {
+		System.out.print("¿Cual va a ser el nombre de la carpeta?: ");
+		String nom = sc.next();
+		comando+=" md "+ruta+"" +"\\"+nom;
+		ProcessBuilder pb1 = new ProcessBuilder(comando.split(" "));
+		pb1.inheritIO();
+
+		try {
+			Process p = pb1.start();
+		} catch (IOException e) {
+			e.getMessage();
+		}
 	}
 }
