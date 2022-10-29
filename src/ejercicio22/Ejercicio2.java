@@ -25,6 +25,7 @@ public class Ejercicio2 {
 
         } catch (IOException e) {
             e.getMessage();
+            System.exit(1);
         } catch (InterruptedException ex) {
             ex.getMessage();
             System.exit(2);
