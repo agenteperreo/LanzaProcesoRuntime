@@ -32,10 +32,12 @@ public class Ejercicio1 {
 		// Si elige crear un fichero, debo pedirle también la ruta donde quiere crearlo
 		// y el nombre del fichero
 		case 2:
+			crearFichero(sc, ruta, comando);
 			break;
 		// Si elige mostrar un directorio, debo pedirle también la ruta del directorio a
 		// mostrar. Si lo deja vacío, debo mostrar el contenido del directorio actual
 		case 3:
+			mostrarDirectorio(ruta,comando);
 			break;
 		default:
 			System.out.println("La opción introducida no es correcta");
@@ -61,17 +63,43 @@ public class Ejercicio1 {
 		return opc;
 	}
 
-	private static void crearCarpeta(Scanner sc, String ruta, String comando) {
-		System.out.print("¿Cual va a ser el nombre de la carpeta?: ");
-		String nom = sc.next();
-		comando+=" md "+ruta+"" +"\\"+nom;
-		ProcessBuilder pb1 = new ProcessBuilder(comando.split(" "));
-		pb1.inheritIO();
+	private static void crearCarpeta(Scanner sc, String ruta, String comando) { //Pasamos por parametros la ruta, el comando y la clase Scanner
+		System.out.print("¿Cual va a ser el nombre de la carpeta?: "); //Pedimos el nombre de la carpeta
+		String nom = sc.next(); //Leemos el nombre
+		comando+=" md "+ruta+"" +"\\"+nom; //Concatenamos el comando con la parte del comando correspondiente y la ruta
+		ProcessBuilder pb = new ProcessBuilder(comando.split(" ")); //Creamos el proceso
+		pb.inheritIO(); //Cogemos la salida predeterminada
 
 		try {
-			Process p = pb1.start();
+			Process p = pb.start(); //Iniciamos el proceso
 		} catch (IOException e) {
-			e.getMessage();
+			e.getMessage(); //Mostramos el mensaje de error en caso de haberlo
+		}
+	}
+
+	private static void crearFichero(Scanner sc, String ruta, String comando) { //Pasamos por parametros la ruta, el comando y la clase Scanner
+		System.out.print("¿Que nombre quieres ponerle al fichero?: "); //Pedimos el nombre del fichero
+		String nom=sc.next(); //Leemos el nombre
+		comando+=" type nul > "+ruta+"\\"+nom; //Concatenamos el comando con la parte del comando correspondiente y la ruta
+		ProcessBuilder pb = new ProcessBuilder(comando.split(" ")); //Creamos el proceso
+		pb.inheritIO(); //Cogemos la salida predeterminada
+
+		try {
+			Process p = pb.start(); //Iniciamos el proceso
+		} catch (IOException e) {
+			e.getMessage(); //Mostramos el mensaje de error en caso de haberlo
+		}
+	}
+
+	private static void mostrarDirectorio(String ruta, String comando) {
+		comando+=" dir "+ruta; //Concatenamos el comando con la parte del comando correspondiente y la ruta
+		ProcessBuilder pb = new ProcessBuilder(comando.split(" ")); //Creamos el proceso
+		pb.inheritIO(); //Cogemos la salida predeterminada
+
+		try {
+			Process p = pb.start(); //Iniciamos el proceso
+		} catch (IOException e) {
+			e.getMessage(); //Mostramos el mensaje de error en caso de haberlo
 		}
 	}
 }
